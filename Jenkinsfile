@@ -10,8 +10,8 @@ pipeline {
         
          stage('Checkout SCM GITHUB') {
             steps {
-                sh "rm -rf projet-scm-pipelin"
-                sh "git clone https://github.com/yanichoupinou/depotgithub.git"
+                deleteDir()
+                git branch: 'main', credentialsId: 'usergit ', url: 'https://github.com/yanichoupinou/depotgithub.git'
                 
             }
         }
