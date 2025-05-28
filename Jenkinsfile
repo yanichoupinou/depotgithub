@@ -17,7 +17,7 @@ pipeline {
         }
          stage('Build image Docker') {
             steps {
-                sh 'docker rmi $(docker images -q)'
+                sh 'docker rmi -f $(docker images -q)'
                 sh "docker build -t my-nginx ."
                 sh "docker tag my-nginx v1.0:my-nginx"
             }
