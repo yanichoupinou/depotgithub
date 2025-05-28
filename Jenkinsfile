@@ -30,6 +30,7 @@ pipeline {
                 //sh "docker rm my-nginx"
                 sh "docker run -d --name monsite --hostname monsite -p 8585:80  v1.0:my-nginx"
                 sh 'docker exec -i monsite bash -c ifconfig | grep broadcast'
+                sh 'docker exec -i monsite bash -c ls /usr/share/nginx/html'
             }
         }
     }
