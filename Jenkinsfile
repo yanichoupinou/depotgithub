@@ -29,7 +29,7 @@ pipeline {
                 //sh "docker stop my-nginx"
                 //sh "docker rm my-nginx"
                 sh "docker run -d --name monsite --hostname monsite -p 8585:80  v1.0:my-nginx"
-                sh 'docker exec -it monsite bash -c ifconfig'
+                sh 'docker exec -it monsite bash -c ifconfig | grep broadcast'
             }
         }
     }
