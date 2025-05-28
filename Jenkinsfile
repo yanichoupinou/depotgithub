@@ -17,14 +17,14 @@ pipeline {
         }
          stage('Build image Docker') {
             steps {
-                sh "docker rmi $(docker images -q)"
+                sh 'docker rmi $(docker images -q)'
                 sh "docker build -t my-nginx ."
                 sh "docker tag my-nginx v1.0:my-nginx"
             }
         }
           stage('déploiement Docker') {
             steps {
-                sh "docker rm -f $(docker ps -qa)"
+                sh 'docker rm -f $(docker ps -qa)'
                 //sh "docker stop my-nginx"
                 //sh "docker rm my-nginx"
                 sh "docker run -d --name monsite --hostname monsite -p 8585:80  v1.0:my-nginx"
