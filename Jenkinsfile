@@ -17,7 +17,7 @@ pipeline {
         }
          stage('Build image Docker') {
             steps {
-                sh 'docker rm -f $(docker ps -qa) || true'
+                bash 'docker rm -f $(docker ps -qa) || true'
                 sh 'docker rmi -f $(docker images -q)'
                 sh "docker build -t my-nginx ."
                 sh "docker tag my-nginx v1.0:my-nginx"
@@ -25,7 +25,7 @@ pipeline {
         }
           stage('déploiement Docker') {
             steps {
-                sh 'docker rm -f $(docker ps -qa) || true' 
+                bash 'docker rm -f $(docker ps -qa) || true' 
                 //sh "docker stop my-nginx"
                 //sh "docker rm my-nginx"
                 sh "docker run -d --name monsite --hostname monsite -p 8585:80  v1.0:my-nginx"
