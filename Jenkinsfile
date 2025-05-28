@@ -15,5 +15,11 @@ pipeline {
                 
             }
         }
+         stage('Build image Docker') {
+            steps {
+                sh "docker build -t my-nginx ."
+                sh "docker tag my-nginx v1.0:my-nginx"
+            }
+        }
     }
 }
